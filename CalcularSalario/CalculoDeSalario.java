@@ -71,12 +71,22 @@ public class CalculoDeSalario {
         System.out.println();
         System.out.println("Você terá que digitar 5 salários para o calculo dos descontos e dos salários Líquidos!!");
         System.out.println();
-
-        //Loop para digitar os 5 salarios brutos
+        
+        // Loop para digitar os 5 salários brutos
         for (int i = 0; i < 5; i++) {
-            System.out.print("Por favord igite o salário número " + (i + 1) + ": ");
-            salariosBrutos[i] = scanner.nextDouble();
+            boolean salarioValido = false;
+            do {
+                System.out.print("Por favor, digite o salário número " + (i + 1) + ": ");
+                double salario = scanner.nextDouble();
+                if (salario >= 0) {
+                    salariosBrutos[i] = salario;
+                    salarioValido = true;
+                } else {
+                    System.out.println("Valor inválido! O salário deve ser maior ou igual a zero.");
+                }
+            } while (!salarioValido);
         }
+
 
         //Prints para deixarem a saida mais organizada
         System.out.println();
